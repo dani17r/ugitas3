@@ -1,0 +1,820 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1,maximum-scale=1, minimum-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="shortcut icon" href="https://statics.spymyfone.com/css/logos/favicon.ico" mce_href="https://statics.spymyfone.com/css/logos/logo_i.png" type="image/x-icon">
+    <title>SpyMyFone - Tablero - Live Demo</title>
+    <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-T9H5SLH"></script>
+    <script type="text/javascript">
+        var FROM_APP = "0";
+        var SPY_DEVICES_NUM = 2;
+        var LAMG_NO_MORE = "No más";
+        var LAMG_COME_BACK = "Vuelve";
+        var LAMG_NO_DEVICES_YET = "No hay dispositivos aún.";
+        var LAMG_SET_NEW_DEVICE = "Establecer un nuevo dispositivo";
+        var LAMG_SIGN_OUT = "desconectar";
+        var LAMG_RETURN_DASHBOARD = "Regresar al tablero";
+        var LAMG_UNBINDING_FAILD = "¡Lo siento! Error en la vinculación.";
+        var STATIC_URL = "https://statics.spymyfone.com";
+        var SPY_SYNC = "Sincronizar...";
+        var SPY_SYNCHING = "Sincronizando ...";
+        var SPY_ONLINE = "En línea";
+        var SPY_OFFLINE = "Desconectado";
+        var SPY_ACTIVE = "Activo";
+        var SPY_LOCKED = "Bloqueado";
+        var SPY_ENABLED = "Activado";
+        var SPY_DISABLED = "Discapacitado";
+        var SPY_NO_CONNECT = "Sin Conexión";
+        var SPY_MAP_PLATFORM = 1;
+
+        var FB_CANNOT_BE_LOADED = "The requested content cannot be loaded. <br /> Please try again later.";
+        var FB_SLIDESHOW = "Slide show";
+        var FB_FULL_SCREEN = "Full screen";
+        var FB_THUMBNAILS = "Thumbnails";
+        var FB_PREVIOUS = "Previous";
+        var FB_NEXT = "Next";
+        var FB_CLOSE = "Close";
+        var FB_WHY_OFFLINE = "El dispositivo objetivo esta desconectado. Significa que probablemente el dispositivo este apagado, desconectado con el Internet o en modo de espera con el bloqueo de pantalla.";
+
+        var LOCALE = 'es';
+        var SPY_DIV_DATA_LOADING = '            <div class="no-results"><div class="inline"><span><img src="https://statics.spymyfone.com/images/loading.gif" /><strong>cargando...</strong></span></div></div>';
+        var SPY_DIV_NO_RESULT = '            <div class="no-results"><div class="inline"><span><img src="https://statics.spymyfone.com/images/no_results.png" /><strong id="no_result_tip_message">No se encontraron resultados</strong></span></div></div>';
+        var SEARCH = '';
+
+        var availableLocales = '["en-US","es","pt","fr","de","it","nl","ar"]';
+        var currentLanguage = 'es';
+        var urlLanguage = getQueryString('lang');
+        var browserLanguage = navigator.browserLanguage ? navigator.browserLanguage : navigator.language;
+        browserLanguage = browserLanguage.substr(0, 2);
+        var oldBrowserLanguage = getCookie('browser_local');
+
+        if (oldBrowserLanguage !== browserLanguage) {
+            document.cookie = 'browser_local=' + browserLanguage;
+            browserLanguage = availableLocales.indexOf(browserLanguage) > 0 ? browserLanguage : 'en-US';
+            if (browserLanguage !== currentLanguage.substr(0, 2)) {
+                var url = window.location.href;
+                window.location.href = getLangUrl(url, 'lang', browserLanguage);
+            }
+        }
+
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r !== null) {
+                return unescape(r[2]);
+            }
+            return '';
+        }
+
+        function getLangUrl(url, arg, arg_val) {
+            var pattern = arg + '=([^&]*)';
+            var replaceText = arg + '=' + arg_val;
+            if (url.match(pattern)) {
+                var tmp = '/(' + arg + '=)([^&]*)/gi';
+                tmp = url.replace(eval(tmp), replaceText);
+                return tmp;
+            } else {
+                if (url.match('[\?]')) {
+                    return url + '&' + replaceText;
+                } else {
+                    return url + '?' + replaceText;
+                }
+            }
+        }
+
+        function getCookie(name) {
+            var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+            if (arr = document.cookie.match(reg))
+                return unescape(arr[2]);
+            else
+                return '';
+        }
+    </script>
+    <link href="https://statics.spymyfone.com/css/main.min.css?v=1539659515" rel="stylesheet">
+    <script src="https://statics.spymyfone.com/js/lib/jquery-2.1.4.bootstrap.min.js?v=1529480300"></script>
+    <meta name="csrf-param" content="_csrf">
+    <meta name="csrf-token" content="S9oStB9MMugWQeSlSKvZmWDW4KjxkTV8M7ES759GqeF_r0fWUXp33yc2i8kD4oH6KIei5bzoc0x92Fmi3HPCig==">
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="https://statics.spymyfone.com/js/main.min.js?v=1539659515" src="https://statics.spymyfone.com/js/main.min.js?v=1539659515"></script>
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="dashboard" src="https://statics.spymyfone.com/js/app/dashboard/Dashboard.min.js?v=154233028"></script>
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="icheck" src="https://statics.spymyfone.com/js/lib/icheck.min.js?v=154233028"></script>
+</head>
+
+<body>
+    <div class="preloader" style="display: none;">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
+        </svg>
+    </div>
+
+    <!--app hide-->
+    <!--mobile top-->
+    <div class="mobile_header visible-xs-block visible-sm-block">
+        <a href="javascript:void(0)" class="menu_btn mobile-menu"><i class="si si-table"></i></a>
+        <div class="other_btn">
+            <a href="/signup.html" class="btn btn-border btn-xs">Pruébalo Ahora</a>
+        </div>
+        <div class="column">SpyMyFone</div>
+    </div>
+    <!--end mobile top-->
+
+    <!-- live demo -->
+    <div class="livedemo_tab">
+        <div class="livedemo_top">
+            <a href="https://my.spymyfone.com/livedemo/dashboard.html?devices_id=1" class="curr"><i class="si si-android"></i> Demo de Android</a>
+            <a href="https://my.spymyfone.com/livedemo/dashboard.html?devices_id=2">Ver Demo de iOS &gt;&gt;</a>
+        </div>
+        <div class="livedemo_tab_group">
+            <a href="https://my.spymyfone.com/livedemo/dashboard.html?devices_id=1" class="curr">Demo de Android</a>
+            <a href="https://my.spymyfone.com/livedemo/dashboard.html?devices_id=2">Demo de iOS</a>
+        </div>
+    </div>
+    <!-- live demo end -->
+
+    <div class="page_container">
+        <!--app hide-->
+        <!--sidebar-->
+        <div class="main_sidebar">
+            <div class="sidebar_menu">
+                <div class="side_header">
+                    <div class="logo_box"><a href="https://www.spymyfone.com" target="_blank" class="logo logo_spyzie">SpyMyFone</a></div>
+                    <!--refresh now start-->
+                    <div class="account_info">
+                        livedemo@spymyfone.com
+                        <div class="sync_time">
+                            <div class="time">
+                                <button type="button" class="btn btn-link btn_sync"><span><i class="si si-sync"></i></span></button><i>Manténgase actualizado: nov. 16, 2018 01:01</i>
+                            </div>
+                        </div>
+                    </div>
+                    <!--refresh now end-->
+                    <div class="select_device select_device_dropdown">
+                        <div class="btn_dropdown">
+                            <span class="icon"><i class="si si-phone"></i></span>
+                            <span class="name" title="Demo's Galaxy S7">
+                                    Demo's Galaxy S7                                </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav side_select_nav" style="display:none;">
+                    <ul>
+                        <li>
+                            <a href="https://my.spymyfone.com/livedemo/dashboard.html?devices_id=2" title="Demo's iPhone">
+                                <i class="si si-phone"></i>
+                                <span>Demo's iPhone</span>
+                            </a>
+                        </li>
+                        <li><a href="/wizard.html"><i class="si si-add"></i><span>Añadir nuevo dispositivo</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav side_select_nav side_menu">
+                    <ul>
+                        <li id="site_index" class="curr">
+                            <a href="https://my.spymyfone.com/livedemo/dashboard.html"><i class="si si-dashboard"></i><span>Tablero</span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                        </li>
+                        <li id="clue_index">
+                            <a href="https://my.spymyfone.com/livedemo/clue.html"><i class="si si-eye"></i><span>Pista</span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                        </li>
+                        <li id="call_log_index">
+                            <a href="https://my.spymyfone.comhttps://my.spymyfone.com/livedemo/call-log.html"><i class="si si-call"></i><span>Llamadas</span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                        </li>
+                        <li id="contacts_index">
+                            <a href="https://my.spymyfone.com/livedemo/contacts.html"><i class="si si-contacts"></i><span>Contactos</span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                        </li>
+                        <li id="sms_index">
+                            <a href="https://my.spymyfone.com/livedemo/sms.html"><i class="si si-message"></i><span>Mensajes</span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                        </li>
+                        <li id="social_apps_" class="level">
+                            <a href="javascript:;"><i class="si si-socialapps"></i><span>Apps sociales <span class="label">HOT</span></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                            <ul>
+                                <li id="whats_app_index"><a href="https://my.spymyfone.com/livedemo/whats-app.html"><span>WhatsApp</span><i class="new_icon new_icon3 hide"></i></a></li>
+                                <li id="whatsapp_files_index"><a href="https://my.spymyfone.com/livedemo/whatsapp-files.html"><span>Archivos de WhatsApp</span><i class="new_icon new_icon3 hide"></i></a></li>
+                                <li id="social_apps_facebook">
+                                    <a href="https://my.spymyfone.com/livedemo/social-apps/facebook.html"><span>Facebook</span><i class="new_icon new_icon3 hide"></i></a></li>
+                                <li id="social_apps_messenger"><a href="https://my.spymyfone.com/livedemo/social-apps/messenger.html"><span>Messenger</span><i class="new_icon new_icon3 hide"></i></a></li>
+                                <li id="social_apps_snapchat">
+                                    <a href="https://my.spymyfone.com/livedemo/social-apps/snapchat.html">
+                                        <span>Snapchat</span><i class="new_icon new_icon3 hide"></i></a>
+                                </li>
+                                <li id="social_apps_skype"><a href="https://my.spymyfone.com/livedemo/social-apps/skype.html"><span>Skype</span><i class="new_icon new_icon3 hide"></i></a></li>
+                                <li id="social_apps_line"><a href="https://my.spymyfone.com/livedemo/social-apps/line.html"><span>LINE</span>
+                                          <i class="new_icon new_icon3 hide"></i></a></li>
+                                <li id="social_apps_instagram"><a href="https://my.spymyfone.com/livedemo/social-apps/instagram.html"><span>Instagram</span><i class="new_icon new_icon3 hide"></i></a></li>
+                                <li id="social_apps_viber"><a href="https://my.spymyfone.com/livedemo/social-apps/viber.html"><span>Viber</span><i class="new_icon new_icon3 hide"></i></a>
+                                </li>
+                                <li id="social_apps_kik"><a href="https://my.spymyfone.com/livedemo/social-apps/kik.html"><span>Kik</span><i class="new_icon new_icon3 hide"></i></a></li>
+                                <li id="social_apps_tinder"><a href="https://my.spymyfone.com/livedemo/social-apps/tinder.html"><span>Tinder</span><i class="new_icon new_icon3 hide"></i></a></li>
+                                <li id="social_apps_wechat">
+                                    <a href="https://my.spymyfone.com/livedemo/social-apps/wechat.html"><span>WeChat</span><i class="new_icon new_icon3 hide"></i></a></li>
+                                <li id="social_apps_qq"><a href="https://my.spymyfone.com/livedemo/social-apps/qq.html"><span>QQ</span><i class="new_icon new_icon3 hide"></i></a></li>
+                                <li id="social_apps_hangouts">
+                                    <a href="https://my.spymyfone.com/livedemo/social-apps/hangouts.html">
+                                        <span>Hangouts</span><i class="new_icon new_icon3 hide"></i></a>
+                                </li>
+                                <li id="social_apps_telegram"><a href="https://my.spymyfone.com/livedemo/social-apps/telegram.html"><span>Telegram</span><i class="new_icon new_icon3 hide"></i></a></li>
+                                <li id="social_apps_messengerlite"><a href="https://my.spymyfone.com/livedemo/social-apps/messengerlite.html"><span>Messenger Lite</span><i class="new_icon new_icon3 hide"></i>
+                                            </a></li>
+                                <li id="social_apps_facebooklite"><a href="https://my.spymyfone.com/livedemo/social-apps/facebooklite.html"><span>Facebook Lite</span><i class="new_icon new_icon3 hide"></i></a></li>
+                                <li id="social_apps_tumblr"><a href="https://my.spymyfone.com/livedemo/social-apps/tumblr.html"><span>Tumblr</span><i class="new_icon new_icon3 hide"></i></a></li>
+                            </ul>
+                        </li>
+                        <li id="location_index">
+                            <a href="https://my.spymyfone.com/livedemo/location.html"><i class="si si-location_mark"></i><span>Ubicaciones</span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                        </li>
+                        <li id="geo_fence_index">
+                            <a href="https://my.spymyfone.com/livedemo/geo-fence.html"><i class="si si-geo_fence"></i><span>Geo-Cercas <span class="label">HOT</span></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                        </li>
+                        <li id="screenshots_index">
+                            <a href="https://my.spymyfone.com/livedemo/screenshots.html"><i class="si si-screenshot"></i><span>Tomar Capturas de Pantallas</span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                        </li>
+                        <li id="browser_log_index">
+                            <a href="/livedemo/browser-log.html"><i class="si si-history"></i><span>Historial del Navegador</span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                        </li>
+                        <li id="images_index">
+                            <a href="/livedemo/images.html"><i class="si si-photos"></i><span>Fotos</span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                        </li>
+                        <li id="videos_index">
+                            <a href="/livedemo/videos.html"><i class="si si-video"></i><span>Previsualizacion de Video</span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                        </li>
+                        <li id="voices_index">
+                            <a href="/livedemo/voices.html"><i class="si si-voice"></i><span>Nota de voz <span class="label">HOT</span></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                        </li>
+                        <li id="documents_index">
+                            <a href="/livedemo/documents.html"><i class="si si-document"></i><span>Documentos <span class="label">HOT</span></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                        </li>
+                        <li id="calendar_index">
+                            <a href="/livedemo/calendar.html"><i class="si si-calendar"></i><span>Calendarios</span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                        </li>
+                        <li id="wifi_logger_index">
+                            <a href="/livedemo/wifi-logger.html"><i class="si si-wifi"></i><span>Registrador de WiFi <span class="label">HOT</span></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                        </li>
+                        <li id="key_logger_index">
+                            <a href="/livedemo/key-logger.html"><i class="si si-keylogger"></i><span>Registrador de Teclas <span class="label">HOT</span></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                        </li>
+                        <li id="apps_index">
+                            <a href="/livedemo/apps.html"><i class="si si-appstore"></i><span>Aplicaciones</span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                        </li>
+                        <li id="device_schedule_index">
+                            <a href="/livedemo/device-schedule.html"><i class="si si-device_schedule"></i><span>Restricción Programada</span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                        </li>
+                        <li id="app_activity_index">
+                            <a href="/livedemo/app-activity.html"><i class="si si-app_activity"></i><span>Actividad de las Aplicaciones</span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                        </li>
+                        <li id="toggle_alerts_index">
+                            <a href="/livedemo/toggle-alerts.html"><i class="si si-toggle_alerts"></i><span>Alertas de Palabras Claves <span class="label">HOT</span></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                        </li>
+                        <li id="mail_index">
+                            <a href="/livedemo/mail.html"><i class="si si-mail"></i><span>E-mail <span class="label">HOT</span></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                        </li>
+                        <li id="auto_snapshot_index">
+                            <a href="https://my.spymyfone.com/livedemo/auto-snapshot.html"><i class="si si-appshot"></i><span>Captura Inteligente <span class="label">HOT</span></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                        </li>
+                    </ul>
+                    <ul class="other">
+                        <li><a href="https://www.spymyfone.com/faq.html" target="_blank"><i class="si si-help"></i><span>Ayuda</span></a></li>
+                        <li><a href="https://www.spymyfone.com/feedback.html" target="_blank"><i class="si si-feedback"></i><span>Feedback</span></a>
+                        </li>
+                        <li><a href="/logout.html"><i class="si si-logout"></i><span>Cerrar Sesión</span></a>
+                        </li>
+                        <li><span>&nbsp;</span></li>
+                        <li><span>&nbsp;</span></li>
+                        <li><span>&nbsp;</span></li>
+                        <li><span>&nbsp;</span></li>
+                        <li><span>&nbsp;</span></li>
+                        <li><span>&nbsp;</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--end sidebar-->
+        <!--mian content-->
+        <!--main_content add app_main when app request-->
+        <div class="main_content ">
+            <div class="main_header">
+                <ul class="user-info-menu hidden-xs hidden-sm">
+                    <li class="user-profile-link">
+                        <a href="/signup.html" class="btn-full btn_try_now">Pruébalo Ahora</a>
+                    </li>
+                </ul>
+                <h1 class="column">Tablero</h1>
+            </div>
+
+            <div class="commonAlert">
+            </div>
+
+            <!--alert mobole download app-->
+            <div id="alert_mobileDownApp" hidden="">
+                <div class="alert alert-mobileDownApp fade in" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <div class="txt">¡La aplicación de SpyMyFone ya está disponible!</div>
+                    <a id="alert_app_donwload" href="#" class="btn">Descargar</a>
+                </div>
+            </div>
+            <!--pop-up windows-->
+            <div class="pop_panel">
+                <span class="close" onclick="$(this).parent().removeClass('show');"></span>
+                <div class="panelBox pro_ad">
+                    <div class="top">
+                        Ver la supervisión importante del dispositivo destino en cualquier momento <strong>Libre de usar</strong>
+                    </div>
+                    <div class="cont">
+                        <div class="logo logo_spyzie_i"></div>
+                        <span>Panel de Control de SpyMyFone</span>
+                        <div class="btnBox">
+                            <a href="http://www.fonetrace.com/control-panel.html" target="_blank" onclick="javascript:ga('send', {hitType: 'event', eventCategory: 'Live Demo Popup', eventAction: 'Click', eventLabel: 'Control Panel Link'});">
+                                <img src="https://statics.spymyfone.com/images/control-panel.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end pop-up windows-->
+            <script type="text/javascript">
+                $(document).ready(function() {
+
+                    if (document.cookie.indexOf('disable_pro_ad') == -1) {
+                        setTimeout(function() {
+                            $(".pop_panel").addClass("show");
+                            var date = new Date();
+                            date.setTime(date.getTime() + (1000 * 60 * 60 * 24 * 7));
+                            document.cookie = 'disable_pro_ad=1;expires=' + date.toGMTString();
+                        }, 1000 * 60);
+                        setTimeout(function() {
+                            $(".pop_panel").removeClass("show");
+                        }, 1000 * 60 * 2);
+                    }
+                })
+            </script>
+            <div id="dashboard" class="main_body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-header panel-header-noborder">
+                                <div class="panel-options">Estado Actual: <strong class="color_red current_status">Activo</strong></div>
+                                <h3 class="title">Información del Dispositivo</h3></div>
+                            <div class="panel-body">
+                                <div class="row device_info">
+                                    <div class="col-lg-4 col-sm-6"><i class="si si-phone"></i> <span>Modelo del Dispositivo:</span> <strong>Galaxy S7</strong></div>
+                                    <div class="col-lg-3 col-sm-6"><i class="si si-battery"></i> <span>Nivel de Batería:</span> <strong id="batterylevel">100%</strong></div>
+                                    <div class="col-lg-2 col-sm-6"><i class="si si-location"></i> <strong>Dayton Valley Golf Course</strong></div>
+                                    <div class="col-md-6"><i class="si si-wifi"></i><span>WiFi Actual:</span><strong>Sin Conexión</strong></div>
+                                    <div class="col-lg-12 col-sm-6"><strong class="btn_sync_tip">Sincronizado 3 minuto(s) antes</strong>&nbsp;<a href="javascript:void(0)" class="btn_sync"><span><i class="si si-sync"></i></span></a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="visible-xs-block visible-sm-block">
+                            <div class="panel panel-default">
+                                <div class="panel-header">
+                                    <h3 class="title">Puedes monitorear:</h3></div>
+                                <div class="panel-body">
+                                    <div class="get_control">
+                                        <div class="list"><a href="https://my.spymyfone.com/livedemo/call-log.html"><i class="si si-call"><span class="badge">5</span></i> <span class="name">Llamadas</span></a></div>
+                                        <div class="list"><a href="https://my.spymyfone.com/livedemo/sms.html"><i class="si si-message"><span class="badge">10</span></i> <span class="name">Mensajes</span></a></div>
+                                        <div class="list"><a href="https://my.spymyfone.com/livedemo/location.html"><i class="si si-location_mark"><span class="badge">3</span></i> <span class="name">Ubicaciones</span></a></div>
+                                        <div class="list"><a href="https://my.spymyfone.com/livedemo/social-apps/facebook.html"><i class="si si-facebook"><span class="badge">15</span></i> <span class="name">Facebook</span></a></div>
+                                        <div class="list"><a href="https://my.spymyfone.com/livedemo/social-apps/snapchat.html"><i class="si si-snapchat"><span class="badge">20</span></i> <span class="name">Snapchat</span></a></div>
+                                        <div class="list"><a href="https://my.spymyfone.com/livedemo/whats-app.html"><i class="si si-whatsapp"><span class="badge">5</span></i> <span class="name">WhatsApp</span></a></div>
+                                        <div class="list"><a href="https://my.spymyfone.com/livedemo/browser-log.html"><i class="si si-history"><span class="badge">27</span></i> <span class="name">Historial del Navegador</span></a></div>
+                                        <div class="list"><a href="https://my.spymyfone.com/livedemo/contacts.html"><i class="si si-contacts"><span class="badge">1</span></i> <span class="name">Contactos</span></a></div>
+                                        <div class="list"><a href="https://my.spymyfone.com/livedemo/images.html"><i class="si si-photos"><span class="badge">3</span></i> <span class="name">Fotos</span></a></div>
+                                        <div class="list"><a href="https://my.spymyfone.com/livedemo/videos.html"><i class="si si-video"><span class="badge">1</span></i> <span class="name">Previsualizacion de Video</span></a></div>
+                                        <div class="list"><a href="https://my.spymyfone.com/livedemo/screenshots.html"><i class="si si-screenshot"><span class="badge">2</span></i> <span class="name">Tomar Capturas de Pantallas</span></a></div>
+                                        <div class="list"><a href="https://my.spymyfone.com/livedemo/key-logger.html"><i class="si si-keylogger"><span class="badge">54</span></i> <span class="name">Registrador de Teclas</span></a></div>
+                                        <div class="list"><a href="https://my.spymyfone.com/livedemo/apps.html"><i class="si si-appstore"><span class="badge">3</span></i> <span class="name">Aplicaciones</span></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-header">
+                                <div class="panel-options"><a href="https://my.spymyfone.com/livedemo/call-log.html" class="btn-arrow">Más</a></div>
+                                <h3 class="title">Nueva Llamada</h3></div>
+                            <div class="panel-body">
+                                <div class="stacked_bars_panel dash_call">
+                                    <div>
+                                        <div>
+                                            <div class="user_img">
+                                                <div class="phone_img"><img src="https://statics.spyzie.com/images/avatar/d.png"></div>
+                                            </div>
+                                            <div class="cont">
+                                                <div class="time_info"><span class="time">10/4/2017 16:48:00</span> <span class="lasts">Dura 0 segundo(s)</span></div>
+                                                <div class="user_info">
+                                                    <div class="user_name">Yohanes Nugroho</div> <span class="phone_num">0888 206 1713</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-header">
+                                <div class="panel-options"><a href="https://my.spymyfone.com/livedemo/sms.html" class="btn-arrow">Más</a></div>
+                                <h3 class="title">Nuevo mensaje</h3></div>
+                            <div class="panel-body">
+                                <div class="stacked_bars_panel dash_mess">
+                                    <div>
+                                        <div>
+                                            <div class="user_img">
+                                                <div class="phone_img"><img src="https://statics.spyzie.com/images/avatar/b.png"></div>
+                                            </div>
+                                            <div class="cont">
+                                                <div class="time_info"><span class="time">10/4/2017 14:27:02</span></div>
+                                                <div class="user_info">
+                                                    <div class="txt">I don't have time, though.</div> <span class="phone_num">13426450006</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pull-right mobile_none">
+                        <div class="panel panel-default">
+                            <div class="panel-header">
+                                <div class="panel-options"><a href="https://my.spymyfone.com/livedemo/location.html" class="btn-arrow">Más</a></div>
+                                <h3 class="title">Última Ubicación Conocida</h3></div>
+                            <div class="panel-body">
+                                <div class="panel-loading loading-results das_map" style="display: none;">
+                                    <div class="inline">
+                                        <div class="table-cell">
+                                            <div class="loading">
+                                                <div class="spinner"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="location" class="das_map panel-box leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style="z-index: 0; position: relative;">
+                                    <div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);">
+                                        <div class="leaflet-pane leaflet-tile-pane">
+                                            <div class="leaflet-layer " style="z-index: 1; opacity: 1;">
+                                                <div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(56px, -25px, 0px) scale(1);">
+                                                  <img alt="" role="presentation" src="https://a.tile.openstreetmap.org/13/2478/3030.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-52px, 288px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.openstreetmap.org/13/2478/3029.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-52px, 32px, 0px); opacity: 1;">
+                                                  <img alt="" role="presentation" src="https://b.tile.openstreetmap.org/13/2478/3028.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-52px, -224px, 0px); opacity: 1;">
+                                                  <img alt="" role="presentation" src="https://b.tile.openstreetmap.org/13/2477/3029.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-308px, 32px, 0px); opacity: 1;">
+                                                  <img alt="" role="presentation" src="https://a.tile.openstreetmap.org/13/2479/3029.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(204px, 32px, 0px); opacity: 1;">
+                                                  <img alt="" role="presentation" src="https://a.tile.openstreetmap.org/13/2477/3028.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-308px, -224px, 0px); opacity: 1;">
+                                                  <img alt="" role="presentation" src="https://c.tile.openstreetmap.org/13/2479/3028.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(204px, -224px, 0px); opacity: 1;">
+                                                  <img alt="" role="presentation" src="https://c.tile.openstreetmap.org/13/2477/3030.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-308px, 288px, 0px); opacity: 1;">
+                                                  <img alt="" role="presentation" src="https://b.tile.openstreetmap.org/13/2479/3030.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(204px, 288px, 0px); opacity: 1;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="leaflet-pane leaflet-shadow-pane">
+                                          <img src="https://unpkg.com/leaflet@1.3.1/dist/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(290px, 202px, 0px);"></div>
+                                        <div class="leaflet-pane leaflet-overlay-pane"></div>
+                                        <div class="leaflet-pane leaflet-marker-pane"><img src="https://unpkg.com/leaflet@1.3.1/dist/images/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(290px, 202px, 0px); z-index: 202;"></div>
+                                        <div class="leaflet-pane leaflet-tooltip-pane"></div>
+                                        <div class="leaflet-pane leaflet-popup-pane">
+                                            <div class="leaflet-popup  leaflet-zoom-animated" style="opacity: 1; transform: translate3d(291px, 168px, 0px); bottom: -7px; left: -97px;">
+                                                <div class="leaflet-popup-content-wrapper">
+                                                    <div class="leaflet-popup-content" style="width: 153px;">
+                                                        <p><b>Dirección:</b>Old North Church</p>
+                                                        <p><b>Fecha:</b>10/4/2017 15:51:31</p>
+                                                    </div>
+                                                </div>
+                                                <div class="leaflet-popup-tip-container">
+                                                    <div class="leaflet-popup-tip"></div>
+                                                </div><a class="leaflet-popup-close-button" href="#close">×</a></div>
+                                        </div>
+                                        <div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(634599px, 775644px, 0px) scale(4096);"></div>
+                                    </div>
+                                    <div class="leaflet-control-container">
+                                        <div class="leaflet-top leaflet-left">
+                                            <div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div>
+                                        </div>
+                                        <div class="leaflet-top leaflet-right"></div>
+                                        <div class="leaflet-bottom leaflet-left"></div>
+                                        <div class="leaflet-bottom leaflet-right">
+                                            <div class="leaflet-control-attribution leaflet-control"><a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-header">
+                                <h3 class="title">Detección de Cambio de Tarjeta SIM</h3></div>
+                            <div class="panel-body">
+                                <div class="stacked_bars_panel top_sim">
+                                    <div class="list">
+                                        <div class="user_img">
+                                            <div class="phone_img"><img src="https://statics.spymyfone.com/images/sim.png"></div>
+                                        </div>
+                                        <div class="cont">
+                                            <div class="user_info"><span class="phone_num">(578)013-8972</span></div>
+                                            <div class="time_info"><span class="time">5/4/2018 23:03:51</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="list">
+                                        <div class="user_img">
+                                            <div class="phone_img"><img src="https://statics.spymyfone.com/images/sim.png"></div>
+                                        </div>
+                                        <div class="cont">
+                                            <div class="user_info"><span class="phone_num">(345)989-1030</span></div>
+                                            <div class="time_info"><span class="time">15/3/2018 2:32:10</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="list">
+                                        <div class="user_img">
+                                            <div class="phone_img"><img src="https://statics.spymyfone.com/images/sim.png"></div>
+                                        </div>
+                                        <div class="cont">
+                                            <div class="user_info"><span class="phone_num">(674)898-0988</span></div>
+                                            <div class="time_info"><span class="time">2/3/2018 15:21:33</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="list">
+                                        <div class="user_img">
+                                            <div class="phone_img"><img src="https://statics.spymyfone.com/images/sim.png"></div>
+                                        </div>
+                                        <div class="cont">
+                                            <div class="user_info"><span class="phone_num">(898)655-8912</span></div>
+                                            <div class="time_info"><span class="time">20/2/2018 6:05:20</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="list">
+                                        <div class="user_img">
+                                            <div class="phone_img"><img src="https://statics.spymyfone.com/images/sim.png"></div>
+                                        </div>
+                                        <div class="cont">
+                                            <div class="user_info"><span class="phone_num">(432)567-5412</span></div>
+                                            <div class="time_info"><span class="time">12/2/2018 12:51:00</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                    <div class="panel panel-default">
+    <div class="panel-header">
+        <div class="panel-options"></div>
+        <h3 class="title">Actividades del Teléfono <small>(Hoy)</small></h3>
+    </div>
+    <div class="panel-body text-center">
+        <div class="panel-loading loading-results das_chart" style="display: none;">
+            <div class="inline">
+                <div class="table-cell">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="activities" class="das_chart panel-box" _echarts_instance_="ec_1542336104635" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative; background: transparent;">
+            <div style="position: relative; overflow: hidden; width: 469px; height: 370px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;"><canvas width="469" height="370" data-zr-dom-id="zr_0" style="position: absolute; left: 0px; top: 0px; width: 469px; height: 370px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div>
+            <div
+                style="position: absolute; display: none; border-style: solid; white-space: nowrap; z-index: 9999999; transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s, top 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s; background-color: rgba(50, 50, 50, 0.7); border-width: 0px; border-color: rgb(51, 51, 51); border-radius: 4px; color: rgb(255, 255, 255); font: 14px/21px sans-serif; padding: 5px; left: 144px; top: 264px;">Historial del Navegador<br>
+                <span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:#FFC263"></span>66</div>
+    </div>
+</div>
+</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-header">
+                                <div class="panel-options"><a href="https://my.spymyfone.com/livedemo/call-log.html" class="btn-arrow">Más</a></div>
+                                <h3 class="title">Los 5 más recientes contactos llamados <small></small></h3></div>
+                            <div class="panel-body">
+                                <div class="stacked_bars_panel">
+                                    <div class="list">
+                                        <div class="user_img">
+                                            <div class="phone_img"><img src="https://statics.spyzie.com/images/avatar/d.png"></div>
+                                        </div>
+                                        <div class="cont">
+                                            <div class="user_info"><span class="user_name">Yohanes Nugroho</span> <span class="phone_num">0888 206 1713</span></div>
+                                            <div class="progress stacked_bars">
+                                                <div role="progressbar" aria-valuenow="29" aria-valuemin="0" aria-valuemax="100" class="progress-bar" style="width: 29%;"><span class="sr-only">29% </span></div> <span count="35" i="101" class="num">35</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="list">
+                                        <div class="user_img">
+                                            <div class="phone_img"><img src="https://statics.spyzie.com/images/avatar/e.png"></div>
+                                        </div>
+                                        <div class="cont">
+                                            <div class="user_info"><span class="user_name">Tom Brackey</span> <span class="phone_num">3102472165</span></div>
+                                            <div class="progress stacked_bars">
+                                                <div role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar" style="width: 25%;"><span class="sr-only">25% </span></div> <span count="31" i="101" class="num">31</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="list">
+                                        <div class="user_img">
+                                            <div class="phone_img"><img src="https://statics.spyzie.com/images/avatar/c.png"></div>
+                                        </div>
+                                        <div class="cont">
+                                            <div class="user_info"><span class="user_name">Tobias Wagenschwanz</span> <span class="phone_num">07427466444</span></div>
+                                            <div class="progress stacked_bars">
+                                                <div role="progressbar" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100" class="progress-bar" style="width: 16%;"><span class="sr-only">16% </span></div> <span count="20" i="101" class="num">20</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="list">
+                                        <div class="user_img">
+                                            <div class="phone_img"><img src="https://statics.spyzie.com/images/avatar/b.png"></div>
+                                        </div>
+                                        <div class="cont">
+                                            <div class="user_info"><span class="user_name">Théophane</span> <span class="phone_num">13426450006</span></div>
+                                            <div class="progress stacked_bars">
+                                                <div role="progressbar" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100" class="progress-bar" style="width: 16%;"><span class="sr-only">16% </span></div> <span count="19" i="101" class="num">19</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="list">
+                                        <div class="user_img">
+                                            <div class="phone_img"><img src="https://images.spyzie.com/my/images/default_avatar.png"></div>
+                                        </div>
+                                        <div class="cont">
+                                            <div class="user_info"><span class="user_name">Desconocido</span> <span class="phone_num">4022910999</span></div>
+                                            <div class="progress stacked_bars">
+                                                <div role="progressbar" aria-valuenow="14" aria-valuemin="0" aria-valuemax="100" class="progress-bar" style="width: 14%;"><span class="sr-only">14% </span></div> <span count="17" i="101" class="num">17</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-header">
+                                <div class="panel-options"><a href="/livedemo/sms.html" class="btn-arrow">Más</a></div>
+                                <h3 class="title">Los 5 más recientes contactos de mensajería <small></small></h3></div>
+                            <div class="panel-body">
+                                <div class="stacked_bars_panel">
+                                    <div class="list">
+                                        <div class="user_img">
+                                            <div class="phone_img"><img src="https://statics.spyzie.com/images/avatar/a.png"></div>
+                                        </div>
+                                        <div class="cont">
+                                            <div class="user_info"><span class="user_name">KR Dkfm. Leopold Wundsam</span> <span class="phone_num">153174950</span></div>
+                                            <div class="progress stacked_bars">
+                                                <div role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" class="progress-bar" style="width: 33%;"><span class="sr-only">33% </span></div> <span count="45" i="101" class="num">45</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="list">
+                                        <div class="user_img">
+                                            <div class="phone_img"><img src="https://statics.spyzie.com/images/avatar/c.png"></div>
+                                        </div>
+                                        <div class="cont">
+                                            <div class="user_info"><span class="user_name">Tobias Wagenschwanz</span> <span class="phone_num">07427466444</span></div>
+                                            <div class="progress stacked_bars">
+                                                <div role="progressbar" aria-valuenow="24" aria-valuemin="0" aria-valuemax="100" class="progress-bar" style="width: 24%;"><span class="sr-only">24% </span></div> <span count="33" i="101" class="num">33</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="list">
+                                        <div class="user_img">
+                                            <div class="phone_img"><img src="https://statics.spyzie.com/images/avatar/f.png"></div>
+                                        </div>
+                                        <div class="cont">
+                                            <div class="user_info"><span class="user_name">Michelle</span> <span class="phone_num">064215379</span></div>
+                                            <div class="progress stacked_bars">
+                                                <div role="progressbar" aria-valuenow="22" aria-valuemin="0" aria-valuemax="100" class="progress-bar" style="width: 22%;"><span class="sr-only">22% </span></div> <span count="31" i="101" class="num">31</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="list">
+                                        <div class="user_img">
+                                            <div class="phone_img"><img src="https://images.spyzie.com/my/images/default_avatar.png"></div>
+                                        </div>
+                                        <div class="cont">
+                                            <div class="user_info"><span class="user_name">Desconocido</span> <span class="phone_num">+18587043344</span></div>
+                                            <div class="progress stacked_bars">
+                                                <div role="progressbar" aria-valuenow="14" aria-valuemin="0" aria-valuemax="100" class="progress-bar" style="width: 14%;"><span class="sr-only">14% </span></div> <span count="19" i="101" class="num">19</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="list">
+                                        <div class="user_img">
+                                            <div class="phone_img"><img src="https://statics.spyzie.com/images/avatar/e.png"></div>
+                                        </div>
+                                        <div class="cont">
+                                            <div class="user_info"><span class="user_name">Tom Brackey</span> <span class="phone_num">3102472165</span></div>
+                                            <div class="progress stacked_bars">
+                                                <div role="progressbar" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100" class="progress-bar" style="width: 7%;"><span class="sr-only">7% </span></div> <span count="10" i="101" class="num">10</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="">
+            <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+            <div class="modal fade icon-switch-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header"><span class="icon-switch-title">Ocultar el ícono de SpyMyFone en el dispositivo de monitoreo</span>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <h4 class="text-center"><small>
+                    SpyMyFone está diseñado para ser utilizado por aquellos quienes tienen derechos legales para monitorear el dispositivo en el cual está instalado. Por favor lee las declaraciones legales importantes y acepta el Acuerdo de Licencia para proceder.                    </small></h4>
+                            <p class="i-checks">
+                                <label>
+                                    <div class="icheckbox_square-green" style="position: relative;">
+                                        <input type="checkbox" name="agree" autocomplete="off" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                                    <small>Entiendo y acepto el Acuerdo de Licencia de SpyMyFone</small>
+                                </label>
+                            </p>
+                            <p class="text-danger hide">Please read and agree to our Terms of Use.</p>
+                            <div class="text-center setting_btn">
+                                <input type="hidden" id="icon_enable">
+                                <a href="javascript:void(0);" class="btn btn-full icon-switch">Esconder</a>
+                                <a href="javascript:void(0);" class="btn btn-border come-back" data-dismiss="modal">Cancelar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--end main content-->
+        <div class="main_footer">
+            Copyright © 2018 SpyMyFone. Todos los Derechos Reservados.
+            <div class="language dropup">
+                <a href="javascript:void(0);" class="flag flag-es dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="false"><span>Español</span></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li>
+                        <a href="/livedemo/dashboard.html?lang=en-US" class="flag flag-en"><span>English</span></a></li>
+                    <li>
+                        <a href="/livedemo/dashboard.html?lang=pt-BR" class="flag flag-br"><span>Português</span></a></li>
+                    <li>
+                        <a href="/livedemo/dashboard.html?lang=fr" class="flag flag-fr"><span>Français</span></a></li>
+                    <li>
+                        <a href="/livedemo/dashboard.html?lang=de" class="flag flag-de"><span>Deutsch</span></a></li>
+                    <li>
+                        <a href="/livedemo/dashboard.html?lang=it" class="flag flag-it"><span>Italiano</span></a></li>
+                    <li>
+                        <a href="/livedemo/dashboard.html?lang=nl" class="flag flag-nl"><span>Nederlands</span></a></li>
+                    <li>
+                        <a href="/livedemo/dashboard.html?lang=ar" class="flag flag-ar"><span>العربية</span></a></li>
+                    <li>
+                        <a href="/livedemo/dashboard.html?lang=ja" class="flag flag-ja"><span>日本語</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://statics.spymyfone.com/js/lib/require.min.js?v=1529480301" data-main="https://statics.spymyfone.com/js/main.min.js?v=1539659515"></script>
+    <script src="https://statics.spymyfone.com/js/common/spy-global.min.js?v=1529480299"></script>
+    <script>
+        var api_url = 'https://data-api.spymyfone.com/v1/data/dashboard?s=e4BTmnFuys8ab6vLuiMyGBY4onGm3g8cL1j68NgSSXk&lang=es&ip=201.208.165.252&from_app=0&timestamp=1542330287944&vc=12790da703953b66a0d71005f9e08843&key=DF57C5922C29CBA3D9F4B0234E5A8A55';
+        var ws_global_switch = true;
+        var dashboard = true;
+
+        var ws_global_switch = true,
+            enable = 'Espectáculo',
+            disable = 'Esconder',
+            icon_switch_url = 'https://my.spymyfone.com/livedemo/site/icon-switch.html',
+            sim_tip_switch_url = 'https://my.spymyfone.com/livedemo/site/close-sim-tip.html';
+
+        ws_init = {
+            'ws_url': 'wss://ws.spyzie.com:4431',
+        };
+
+        function runCheckSync() {
+            $.getJSON('/site/check-sync.html', function(json) {
+                var need_reload = false;
+                $.each(json, function(name, value) {
+                    if (parseInt(value) > 0) {
+                        $('#' + name + '>a i.new_icon').removeClass('hide').show();
+                        if (name == 'site_index') {
+                            need_reload = true;
+                        }
+                        if (name == 'screenshots_index' || name == 'camera_capture_index') {
+                            need_reload = false;
+                        }
+                    }
+                });
+                if (need_reload) {
+                    setTimeout('window.location.reload();', 1000);
+                }
+            });
+        }
+    </script>
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-T9H5SLH');
+    </script>
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T9H5SLH" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script type="text/javascript" id="uts_lp" src="https://www.linkconnector.com/uts_lp.php?cgid=900969"></script>
+
+</body>
+
+</html>
