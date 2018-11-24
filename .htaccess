@@ -1,7 +1,7 @@
 RewriteEngine On
 
 RewriteRule ^/?$ view/tablero.html
-RewriteRule ^/tablero?$ view/tablero.html
+RewriteRule ^tablero?$ view/tablero.html
 RewriteRule ^pista?$ view/pista.html
 RewriteRule ^llamadas?$ view/llamadas.html
 RewriteRule ^mensajes?$ view/mensajes.html

@@ -4,45 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1,maximum-scale=1, minimum-scale=1">
-    <meta name="robots" content="noindex,nofollow">
     <link rel="shortcut icon" href="public/img/favicon.ico" mce_href="public/img/logo_i.png" type="image/x-icon">
     <title>SpyMyFone - Pista - Live Demo</title>
     <link href="https://statics.spymyfone.com/css/main.min.css" rel="stylesheet">
-    <style>
-            .photo_list .name {
-            padding: 5px 0px 20px 4px;
-            min-height: 0px;
-            line-height: 1.2;
-            word-break: break-all;
-            word-wrap: break-word;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
+    <link href="public/css/table.css" rel="stylesheet">
+    <link href="public/css/style.css" rel="stylesheet">
 
-        .panel-body {
-            min-height: 400px;
-        }
-
-        @media (min-width: 979px) {
-            .photo_list li {
-                width: 140px;
-            }
-        }
-
-        @media (max-width:768px) {
-            .photo_list li {
-                width: 31.3%;
-            }
-        }
-
-        @media (max-width: 320px) {
-            .photo_list li {
-                padding-right: 0;
-                margin-left: 4%;
-                width: 48%;
-            }
-    </style>
+    <script src="https://statics.spymyfone.com/js/lib/jquery-2.1.4.bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -53,7 +21,7 @@
     </div>
 
     <div class="mobile_header visible-xs-block visible-sm-block">
-        <a href="" class="menu_btn mobile-menu"><i class="si si-table"></i></a>
+        <a href="javascript:void(0)" class="menu_btn mobile-menu"><i class="si si-table"></i></a>
         <div class="other_btn">
             <a href="#" class="btn btn-border btn-xs">Pruébalo Ahora</a>
         </div>
@@ -74,146 +42,149 @@
     <div class="page_container">
 
         <div class="main_sidebar">
-            <div class="sidebar_menu">
-                <div class="side_header">
-                    <div class="logo_box"><a href="#" target="_blank" class="logo logo_spyzie">SpyMyFone</a></div>
-                    <!--refresh now start-->
-                    <div class="account_info">
-                        livedemo@spymyfone.com
-                        <div class="sync_time">
-                            <div class="time">
-                                <button type="button" class="btn btn-link btn_sync"><span><i class="si si-sync"></i></span></button><i>Manténgase actualizado: abr. 10, 2017 11:28 </i>
-                            </div>
-                        </div>
-                    </div>
-                    <!--refresh now end-->
-                    <div class="select_device select_device_dropdown">
-                        <div class="btn_dropdown">
-                            <span class="icon"><i class="si si-phone"></i></span>
-                            <span class="name" title="Demo's Galaxy S7">Demo's Galaxy S7</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="nav side_select_nav" style="display:none;">
-                    <ul>
-                        <li>
-                            <a href="#" title="Demo's iPhone">
-                                <i class="si si-phone"></i>
-                                <span>Demo's iPhone</span>
-                            </a>
-                        </li>
-                        <li><a href="#"><i class="si si-add"></i><span>Añadir nuevo dispositivo</span></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="nav side_select_nav side_menu">
-                    <ul>
-                        <li id="site_index">
-                            <a href="#"><i class="si si-dashboard"></i><span>Tablero</span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                        </li>
-                        <li id="clue_index" class="curr">
-                            <a href="#"><i class="si si-eye"></i><span>Pista</span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                        </li>
-                        <li id="call_log_index">
-                            <a href="#"><i class="si si-call"></i><span>Llamadas</span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                        </li>
-                        <li id="contacts_index">
-                            <a href="#"><i class="si si-contacts"></i><span>Contactos</span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                        </li>
-                        <li id="sms_index">
-                            <a href="#"><i class="si si-message"></i><span>Mensajes</span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                        </li>
-                        <li id="social_apps_" class="level">
-                            <a href="#"><i class="si si-socialapps"></i><span>Apps sociales <span class="label">HOT</span></span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                            <ul>
-                                <li id="whats_app_index"><a href="#"><span>WhatsApp</span><i class="new_icon new_icon3 hide"></i></a></li>
-                                <li id="whatsapp_files_index"><a href="#"><span>Archivos de WhatsApp</span><i class="new_icon new_icon3 hide"></i></a></li>
-                                <li id="social_apps_facebook"><a href="#"><span>Facebook</span><i class="new_icon new_icon3 hide"></i></a></li>
-                                <li id="social_apps_messenger"><a href="#"><span>Messenger</span><i class="new_icon new_icon3 hide"></i></a></li>
-                                <li id="social_apps_snapchat"><a href="#"><span>Snapchat</span><i class="new_icon new_icon3 hide"></i></a></li>
-                                <li id="social_apps_skype"><a href="#"><span>Skype</span><i class="new_icon new_icon3 hide"></i></a></li>
-                                <li id="social_apps_line"><a href="#"><span>LINE</span><i class="new_icon new_icon3 hide"></i></a></li>
-                                <li id="social_apps_instagram"><a href="#"><span>Instagram</span><i class="new_icon new_icon3 hide"></i></a></li>
-                                <li id="social_apps_viber"><a href="#"><span>Viber</span><i class="new_icon new_icon3 hide"></i></a></li>
-                                <li id="social_apps_kik"><a href="#"><span>Kik</span><i class="new_icon new_icon3 hide"></i></a></li>
-                                <li id="social_apps_tinder"><a href="#"><span>Tinder</span><i class="new_icon new_icon3 hide"></i></a></li>
-                                <li id="social_apps_wechat"><a href="#"><span>WeChat</span><i class="new_icon new_icon3 hide"></i></a></li>
-                                <li id="social_apps_qq"><a href="#"><span>QQ</span><i class="new_icon new_icon3 hide"></i></a></li>
-                                <li id="social_apps_hangouts"><a href="#"><span>Hangouts</span><i class="new_icon new_icon3 hide"></i></a></li>
-                                <li id="social_apps_telegram"><a href="#"><span>Telegram</span><i class="new_icon new_icon3 hide"></i></a></li>
-                                <li id="social_apps_messengerlite"><a href="#"><span>Messenger Lite</span><i class="new_icon new_icon3 hide"></i></a></li>
-                                <li id="social_apps_facebooklite"><a href="#"><span>Facebook Lite</span><i class="new_icon new_icon3 hide"></i></a></li>
-                                <li id="social_apps_tumblr"><a href="#"><span>Tumblr</span><i class="new_icon new_icon3 hide"></i></a></li>
-                            </ul>
-                        </li>
-                        <li id="location_index">
-                            <a href="#"><i class="si si-location_mark"></i><span>Ubicaciones</span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                        </li>
-                        <li id="geo_fence_index">
-                            <a href="#"><i class="si si-geo_fence"></i><span>Geo-Cercas <span class="label">HOT</span></span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                        </li>
-                        <li id="screenshots_index">
-                            <a href="#"><i class="si si-screenshot"></i><span>Tomar Capturas de Pantallas</span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                        </li>
-                        <li id="browser_log_index">
-                            <a href="#"><i class="si si-history"></i><span>Historial del Navegador</span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                        </li>
-                        <li id="images_index">
-                            <a href="#"><i class="si si-photos"></i><span>Fotos</span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                        </li>
-                        <li id="videos_index">
-                            <a href="#"><i class="si si-video"></i><span>Previsualizacion de Video</span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                        </li>
-                        <li id="voices_index">
-                            <a href="#"><i class="si si-voice"></i><span>Nota de voz <span class="label">HOT</span></span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                        </li>
-                        <li id="documents_index">
-                            <a href="#"><i class="si si-document"></i><span>Documentos <span class="label">HOT</span></span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                        </li>
-                        <li id="calendar_index">
-                            <a href="#"><i class="si si-calendar"></i><span>Calendarios</span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                        </li>
-                        <li id="wifi_logger_index">
-                            <a href="#"><i class="si si-wifi"></i><span>Registrador de WiFi <span class="label">HOT</span></span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                        </li>
-                        <li id="key_logger_index">
-                            <a href="#"><i class="si si-keylogger"></i><span>Registrador de Teclas <span class="label">HOT</span></span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                        </li>
-                        <li id="apps_index">
-                            <a href="#"><i class="si si-appstore"></i><span>Aplicaciones</span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                        </li>
-                        <li id="device_schedule_index">
-                            <a href="#"><i class="si si-device_schedule"></i><span>Restricción Programada</span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                        </li>
-                        <li id="app_activity_index">
-                            <a href="#"><i class="si si-app_activity"></i><span>Actividad de las Aplicaciones</span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                        </li>
-                        <li id="toggle_alerts_index">
-                            <a href="#"><i class="si si-toggle_alerts"></i><span>Alertas de Palabras Claves <span class="label">HOT</span></span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                        </li>
-                        <li id="mail_index">
-                            <a href="#"><i class="si si-mail"></i><span>E-mail <span class="label">HOT</span></span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                        </li>
-                        <li id="auto_snapshot_index">
-                            <a href="#"><i class="si si-appshot"></i><span>Captura Inteligente <span class="label">HOT</span></span><i class="new_icon new_icon3 hide"></i>                                    </a>
-                        </li>
-                    </ul>
-                    <ul class="other">
-                        <li><a href="#" target="_blank"><i class="si si-help"></i><span>Ayuda</span></a></li>
-                        <li><a href="#" target="_blank"><i class="si si-feedback"></i><span>Feedback</span></a>
-                        </li>
-                        <li><a href="#"><i class="si si-logout"></i><span>Cerrar Sesión</span></a>
-                        </li>
-                        <li><span>&nbsp;</span></li>
-                        <li><span>&nbsp;</span></li>
-                        <li><span>&nbsp;</span></li>
-                        <li><span>&nbsp;</span></li>
-                        <li><span>&nbsp;</span></li>
-                        <li><span>&nbsp;</span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+          <div class="sidebar_menu">
+              <div class="side_header">
+                  <div class="logo_box"><a href="/" target="_blank" class="logo logo_spyzie">SpyMyFone</a></div>
+
+                  <!--refresh now start-->
+                  <div class="account_info">
+                      livedemo@spymyfone.com
+                      <div class="sync_time">
+                          <div class="time">
+                              <button type="button" class="btn btn-link btn_sync"><span><i class="si si-sync"></i></span></button> <i>Manténgase actualizado: nov. 18, 2018 18:10</i>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="select_device select_device_dropdown">
+                      <div class="btn_dropdown">
+                          <span class="icon"><i class="si si-phone"></i></span>
+                          <span class="name" title="Demo's Galaxy S7">Demo's Galaxy S7</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="nav side_select_nav" style="display:none;">
+                  <ul>
+                      <li>
+                          <a href="#" title="Demo's iPhone">
+                              <i class="si si-phone"></i>
+                              <span>Demo's iPhone</span>
+                          </a>
+                      </li>
+                      <li><a href="#"><i class="si si-add"></i><span>Añadir nuevo dispositivo</span></a>
+                      </li>
+                  </ul>
+              </div>
+              <div class="nav side_select_nav side_menu">
+                  <ul>
+                      <li id="site_index">
+                          <a href="tablero"><i class="si si-dashboard"></i><span>Tablero</span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                      </li>
+                      <li id="clue_index" class="curr">
+                          <a href="pista"><i class="si si-eye"></i><span>Pista</span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                      </li>
+                      <li id="call_log_index">
+                          <a href="llamadas"><i class="si si-call"></i><span>Llamadas</span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                      </li>
+                      <li id="contacts_index">
+                          <a href="#">
+                            <i class="si si-contacts"></i>
+                            <span class="span_icon">Contactos<img src="public/img/lock.png" class="ico_cand"></span>
+                            <i class="new_icon new_icon3 hide"></i>                                    </a>
+                      </li>
+                      <li id="sms_index">
+                          <a href="mensajes"><i class="si si-message"></i><span>Mensajes</span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                      </li>
+                      <li id="social_apps_" class="level">
+                          <a href="#"><i class="si si-socialapps"></i><span>Apps sociales <span class="label">HOT</span><img src="public/img/lock.png" class="ico_cand"></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                          <ul>
+                              <li id="whats_app_index"><a href="#"><span>WhatsApp</span><i class="new_icon new_icon3 hide"></i></a></li>
+                              <li id="whatsapp_files_index"><a href="#"><span>Archivos de WhatsApp</span><i class="new_icon new_icon3 hide"></i></a></li>
+                              <li id="social_apps_facebook"><a href="#"><span>Facebook</span><i class="new_icon new_icon3 hide"></i></a></li>
+                              <li id="social_apps_messenger"><a href="#"><span>Messenger</span><i class="new_icon new_icon3 hide"></i></a></li>
+                              <li id="social_apps_snapchat"><a href="#"><span>Snapchat</span><i class="new_icon new_icon3 hide"></i></a></li>
+                              <li id="social_apps_skype"><a href="#"><span>Skype</span><i class="new_icon new_icon3 hide"></i></a></li>
+                              <li id="social_apps_line"><a href="#"><span>LINE</span><i class="new_icon new_icon3 hide"></i></a></li>
+                              <li id="social_apps_instagram"><a href="#"><span>Instagram</span><i class="new_icon new_icon3 hide"></i></a></li>
+                              <li id="social_apps_viber"><a href="#"><span>Viber</span><i class="new_icon new_icon3 hide"></i></a></li>
+                              <li id="social_apps_kik"><a href="#"><span>Kik</span><i class="new_icon new_icon3 hide"></i></a></li>
+                              <li id="social_apps_tinder"><a href="#"><span>Tinder</span><i class="new_icon new_icon3 hide"></i></a></li>
+                              <li id="social_apps_wechat"><a href="#"><span>WeChat</span><i class="new_icon new_icon3 hide"></i></a></li>
+                              <li id="social_apps_qq"><a href="#"><span>QQ</span><i class="new_icon new_icon3 hide"></i></a></li>
+                              <li id="social_apps_hangouts"><a href="#"><span>Hangouts</span><i class="new_icon new_icon3 hide"></i></a></li>
+                              <li id="social_apps_telegram"><a href="#"><span>Telegram</span><i class="new_icon new_icon3 hide"></i></a></li>
+                              <li id="social_apps_messengerlite"><a href="#"><span>Messenger Lite</span><i class="new_icon new_icon3 hide"></i></a></li>
+                              <li id="social_apps_facebooklite"><a href="#"><span>Facebook Lite</span><i class="new_icon new_icon3 hide"></i></a></li>
+                              <li id="social_apps_tumblr"><a href="#"><span>Tumblr</span><i class="new_icon new_icon3 hide"></i></a></li>
+                          </ul>
+                      </li>
+                      <li id="location_index">
+                          <a href="#"><i class="si si-location_mark"></i><span>Ubicaciones<img src="public/img/lock.png" class="ico_cand"></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                      </li>
+                      <li id="geo_fence_index">
+                          <a href="#"><i class="si si-geo_fence"></i><span>Geo-Cercas <span class="label">HOT</span><img src="public/img/lock.png" class="ico_cand"></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                      </li>
+                      <li id="screenshots_index">
+                          <a href="#"><i class="si si-screenshot"></i><span>Capturas de Pantallas<img src="public/img/lock.png" class="ico_cand"></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                      </li>
+                      <li id="browser_log_index">
+                          <a href="#"><i class="si si-history"></i><span>Historial del Navegador<img src="public/img/lock.png" class="ico_cand"></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                      </li>
+                      <li id="images_index">
+                          <a href="#"><i class="si si-photos"></i><span>Fotos<img src="public/img/lock.png" class="ico_cand"></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                      </li>
+                      <li id="videos_index">
+                          <a href="#"><i class="si si-video"></i><span>Previsualizacion de Video<img src="public/img/lock.png" class="ico_cand"></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                      </li>
+                      <li id="voices_index">
+                          <a href="#"><i class="si si-voice"></i><span>Nota de voz <span class="label">HOT</span><img src="public/img/lock.png" class="ico_cand"></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                      </li>
+                      <li id="documents_index">
+                          <a href="#"><i class="si si-document"></i><span>Documentos <span class="label">HOT</span><img src="public/img/lock.png" class="ico_cand"></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                      </li>
+                      <li id="calendar_index">
+                          <a href="#"><i class="si si-calendar"></i><span>Calendarios<img src="public/img/lock.png" class="ico_cand"></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                      </li>
+                      <li id="wifi_logger_index">
+                          <a href="#"><i class="si si-wifi"></i><span>Registrador de WiFi<span class="label">HOT</span><img src="public/img/lock.png" class="ico_cand"></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                      </li>
+                      <li id="key_logger_index">
+                          <a href="#"><i class="si si-keylogger"></i><span>Registrador de Teclas<span class="label">HOT</span><img src="public/img/lock.png" class="ico_cand"></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                      </li>
+                      <li id="apps_index">
+                          <a href="#"><i class="si si-appstore"></i><span>Aplicaciones<img src="public/img/lock.png" class="ico_cand"></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                      </li>
+                      <li id="device_schedule_index">
+                          <a href="#"><i class="si si-device_schedule"></i><span>Restricción Programada<img src="public/img/lock.png" class="ico_cand"></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                      </li>
+                      <li id="app_activity_index">
+                          <a href="#"><i class="si si-app_activity"></i><span>Actividad de las Aplicaciones<img src="public/img/lock.png" class="ico_cand"></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                      </li>
+                      <li id="toggle_alerts_index">
+                          <a href="#"><i class="si si-toggle_alerts"></i><span>Alertas de Palabras Claves <span class="label">HOT</span><img src="public/img/lock.png" class="ico_cand"></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                      </li>
+                      <li id="mail_index">
+                          <a href="#"><i class="si si-mail"></i><span>E-mail <span class="label">HOT</span><img src="public/img/lock.png" class="ico_cand"></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                      </li>
+                      <li id="auto_snapshot_index">
+                          <a href="#"><i class="si si-appshot"></i><span>Captura Inteligente <span class="label">HOT</span><img src="public/img/lock.png" class="ico_cand"></span><i class="new_icon new_icon3 hide"></i>                                    </a>
+                      </li>
+                  </ul>
+                  <ul class="other">
+                      <li><a href="#" target="_blank"><i class="si si-help"></i><span>Ayuda</span></a></li>
+                      <li><a href="#" target="_blank"><i class="si si-feedback"></i><span>Feedback</span></a>
+                      </li>
+                      <li><a href="#"><i class="si si-logout"></i><span>Cerrar Sesión</span></a>
+                      </li>
+                      <li><span>&nbsp;</span></li>
+                      <li><span>&nbsp;</span></li>
+                      <li><span>&nbsp;</span></li>
+                      <li><span>&nbsp;</span></li>
+                      <li><span>&nbsp;</span></li>
+                      <li><span>&nbsp;</span></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
         <!--end sidebar-->
         <!--mian content-->
         <!--main_content add app_main when app request-->
@@ -454,12 +425,22 @@
                                             <div class="name"><span title="Best Funny Fail.mp4">Best Funny Fail.mp4</span></div>
                                         </li>
                                         <li>
-                                            <div class="pic"><a href="" data-fancybox="gallery880"><span>
-                                            <img src="public/img/n5.jpg" loaded"></span></a>
-                                                <!----><i href="" data-fancybox="gallery880">
-                                                <div class="info"><span class="time">14/6/2017 10:11:52</span></div>
+                                            <div class="pic">
+                                              <a href="" data-fancybox="gallery880">
+                                                <span>
+                                                 <img src="public/img/n5.jpg" loaded>
+                                               </span>
+                                             </a>
+
+                                                <i href="" data-fancybox="gallery880">
+                                                <div class="info">
+                                                  <span class="time">14/6/2017 10:11:52</span>
+                                                </div>
                                             </div>
-                                            <div class="name"><span title="Best FAILS &amp; Funny Videos.mp4">Best FAILS &amp; Funny Videos.mp4</span></div>
+
+                                            <div class="name">
+                                              <span title="Best FAILS &amp; Funny Videos.mp4">Best FAILS &amp; Funny Videos.mp4</span>
+                                            </div>
                                         </li>
                                     </ul>
                                 </div>
@@ -489,13 +470,14 @@
                     <li>
                         <a href="#" class="flag flag-nl"><span>Nederlands</span></a></li>
                     <li>
-                        <a href="# class="flag flag-ar"><span>العربية</span></a></li>
+                        <a href="#" class="flag flag-ar"><span>العربية</span></a></li>
                     <li>
                         <a href="#" class="flag flag-ja"><span>日本語</span></a></li>
                 </ul>
             </div>
         </div>
     </div>
+    <script src="https://statics.spymyfone.com/js/common/spy-global.min.js"></script>
 </body>
 
 </html>

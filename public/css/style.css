@@ -1,0 +1,39 @@
+.ico_cand{
+	margin-left: 5px !important;
+	margin-top: -3px !important;
+	width: 18px !important;
+}
+.photo_list .name {
+	padding: 5px 0px 20px 4px;
+	min-height: 0px;
+	line-height: 1.2;
+	word-break: break-all;
+	word-wrap: break-word;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.panel-body {
+	min-height: 400px;
+}
+
+@media (min-width: 979px) {
+	.photo_list li {
+			width: 140px;
+	}
+}
+
+@media (max-width:768px) {
+	.photo_list li {
+			width: 31.3%;
+	}
+}
+
+@media (max-width: 320px) {
+	.photo_list li {
+			padding-right: 0;
+			margin-left: 4%;
+			width: 48%;
+	}
+}
